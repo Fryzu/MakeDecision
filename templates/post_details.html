@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block head_title %}{{ post.title }} - {{ block.super }}{% endblock head_title %}
+
+{% block content %}
+    <h2>{{ post.title }}</h2>
+    <h5>
+        <small class="text-muted">Asked </small>{{ post.create_date }}
+        <small class="text-muted">by </small>
+        <a href="#">{{ post.author }}</a>
+    </h5>
+    <hr>
+    <p>{{ post.content | linebreaks}}</p>
+{% endblock content %}
