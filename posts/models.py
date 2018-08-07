@@ -1,10 +1,12 @@
 from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 # Create your models here.
 
 class Post(models.Model):
+    _id = models.AutoField(primary_key=True)
     slug = models.SlugField(unique=True, max_length=140, blank=True, null=True)
     title = models.CharField(max_length=120)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
@@ -15,18 +17,17 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    def _create_slug(self):
-        new_slug = slugify(self.title)
-        if Post.objects.filter(slug=new_slug).exists():
-            new_slug = '%s-%s' %(new_slug, self.id)
-        return new_slug
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = self._create_slug()
-        super().save(*args, **kwargs)
-
     #TODO add post detail view using django.urls.reverse() 
     # https://docs.djangoproject.com/pl/2.1/ref/urlresolvers/
     def get_absolute_url(self):
         pass
+
+def create_slug(instance, *args, **kwargs):
+    new_slug = slugify(instance.title)
+    if Post.objects.filter(slug=new_slug).exists():
+        new_slug = '%s-%s' %(new_slug, instance._id)
+    if not instance.slug:
+        instance.slug = new_slug
+        instance.save()
+
+post_save.connect(create_slug, sender=Post)
