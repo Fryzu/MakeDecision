@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
+from django.urls import reverse
 
 # Create your models here.
 
@@ -20,7 +21,7 @@ class Post(models.Model):
     #TODO add post detail view using django.urls.reverse() 
     # https://docs.djangoproject.com/pl/2.1/ref/urlresolvers/
     def get_absolute_url(self):
-        pass
+        return reverse('post_details', kwargs={'requested_slug': self.slug})
 
 def create_slug(instance, *args, **kwargs):
     new_slug = slugify(instance.title)

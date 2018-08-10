@@ -17,5 +17,6 @@ from django.urls import path, re_path
 from .views import *
 
 urlpatterns = [
-    re_path(r'questions/(?P<requested_slug>[a-z0-9-]+)$', post_details, name='details'),
+    re_path(r'^$', main_view, name="main_view"),
+    re_path(r'^questions/(?P<requested_slug>[a-z0-9-]+)$', post_details, name='post_details'),
 ]
