@@ -1,7 +1,7 @@
 <div class="card mb-2">
     <div class="card-body">
         <div class="d-flex justify-content-between">
-            <h5>{{i.title}}</h5>
+            <a href="{{ i.get_absolute_url }}" class="text-dark"><h5>{{i.title}}</h5></a>
             <span>{{i.update_date|timesince}} ago by <a href="#">{{i.author}}</a></span>
         </div><hr>
         <div class="d-flex justify-content-between">

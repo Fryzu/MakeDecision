@@ -8,8 +8,14 @@
 </div>
 <div class="row">
     <div class="col col-12 col-xl-8">
-        <h2>Top questions:</h1>
-            <hr> 
+        <div class="d-flex justify-content-between mb-3">
+            <button class="btn btn-primary">Add question</button>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div><hr> 
+        <h2 class="mb-3">Top questions:</h2>
             {% for i in object_list %} 
                 {% include "main_list_item.html" %} 
             {% endfor %}
