@@ -20,7 +20,8 @@ from django.urls import path, re_path, include
 
 urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
-    re_path(r'', include("posts.urls")),
+    re_path(r'^users/', include("users.urls")),
+    re_path(r'^', include("posts.urls")),
 ]
 
 if settings.DEBUG:

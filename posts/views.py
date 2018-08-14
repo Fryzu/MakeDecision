@@ -1,11 +1,22 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth import authenticate, login
 
 from .models import *
 
 # Create your views here.
 
 def main_view(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            print('METHOD POST - USER AUTHENTICATED')
+        else:
+            print('METHOD POST - USER NOT AUTHENTICATED')
+
     object_list = Post.objects.all()
 
     context = {

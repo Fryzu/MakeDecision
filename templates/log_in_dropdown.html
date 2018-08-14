@@ -1,0 +1,43 @@
+{% if user.is_authenticated %}
+<button class="btn btn-light">
+    Welcome <b>{{ user.get_username }}</b>
+</button>
+<form method="POST" action="{% url 'logout_view' %}">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-primary" value="Log out">
+</form>
+{% else %}
+<div class="btn-group">
+    <button class="btn btn-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Log in
+    </button>
+    <div class="dropdown-menu">
+        <form class="px-4 py-3" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="exampleDropdownFormEmail1">Username</label>
+                <input name="username" type="text" class="form-control" id="exampleDropdownFormEmail1" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <label for="exampleDropdownFormPassword1">Password</label>
+                <input name="password" type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Log in">
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+        {% if form.errors %}
+        <p class=" label label-danger">
+            Your username and password didn't match. Please try again.
+        </p>
+        {% endif %}
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">New around here? Sign up</a>
+        <a class="dropdown-item" href="#">Forgot password?</a>
+    </div>
+</div>
+<div class="btn-group">
+    <button class="btn btn-primary">
+        Sign up
+    </button>
+</div>
+{% endif %}
