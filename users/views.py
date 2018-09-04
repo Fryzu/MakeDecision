@@ -13,6 +13,7 @@ def logout_view(request):
     return HttpResponseRedirect(reverse("main_view"))
 
 def signup_view(request):
+    # TODO: User form input corectness
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
