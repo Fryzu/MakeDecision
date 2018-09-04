@@ -15,11 +15,12 @@ class Post(models.Model):
     update_date = models.DateTimeField(auto_now=True, auto_now_add=False)
     content = models.TextField()
 
+    class Meta:
+        ordering = ['-update_date', '_id']
+
     def __str__(self):
         return self.title
 
-    #TODO add post detail view using django.urls.reverse() 
-    # https://docs.djangoproject.com/pl/2.1/ref/urlresolvers/
     def get_absolute_url(self):
         return reverse('post_details', kwargs={'requested_slug': self.slug})
 

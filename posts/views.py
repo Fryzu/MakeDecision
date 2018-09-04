@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib import messages
 
 from .models import *
 
@@ -13,11 +15,10 @@ def main_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            print('METHOD POST - USER AUTHENTICATED')
         else:
-            print('METHOD POST - USER NOT AUTHENTICATED')
+            messages.add_message(request, messages.ERROR, 'Incorrect username or password.')
 
-    object_list = Post.objects.all()
+    object_list = Post.objects.all()[:3]
 
     context = {
         "object_list": object_list,
