@@ -17,5 +17,6 @@ from django.urls import path, re_path
 from .views import *
 
 urlpatterns = [
+    re_path(r'^registration/$', signup_view, name="signup_view"),
     re_path(r'^logout/$', logout_view, name="logout_view"),    
 ]

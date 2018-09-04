@@ -1,11 +1,15 @@
 {% if user.is_authenticated %}
-<button class="btn btn-light">
-    Welcome <b>{{ user.get_username }}</b>
-</button>
-<form method="POST" action="{% url 'logout_view' %}">
-    {% csrf_token %}
-    <input type="submit" class="btn btn-primary" value="Log out">
-</form>
+<div class="btn-group">
+    <button class="btn btn-light">
+        Welcome <b>{{ user.get_username }}</b>
+    </button>
+</div>
+<div class="btn-group">
+    <form method="POST" action="{% url 'logout_view' %}">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-primary" value="Log out">
+    </form>
+</div>
 {% else %}
 <div class="btn-group">
     <button id="error_popover" class="btn btn-light" data-content="And here's some amazing content. It's very engaging. Right?" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -26,13 +30,13 @@
             <input type="hidden" name="next" value="{{ next }}" />
         </form>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">New around here? Sign up</a>
+        <a class="dropdown-item" href="{% url 'signup_view' %}">New around here? Sign up</a>
         <a class="dropdown-item" href="#">Forgot password?</a>
     </div>
 </div>
 <div class="btn-group">
-    <button class="btn btn-primary">
+    <a href="{% url 'signup_view' %}" class="btn btn-primary">
         Sign up
-    </button>
+    </a>
 </div>
 {% endif %}
