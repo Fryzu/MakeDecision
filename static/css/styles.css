@@ -1,5 +1,9 @@
 /*styles*/
 
+.link-unstyled:hover {
+    text-decoration: none;
+}
+
 #main_slider {
     background-image: url('../images/animal.jpg');
 }
@@ -10,6 +14,7 @@
 
 #ad-jumbotron h1 {
     color: #FFF;
+    font-weight: bold;
 }
 
 #ad-jumbotron h3 {

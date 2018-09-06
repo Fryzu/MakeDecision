@@ -11,4 +11,10 @@
     </h5>
     <hr>
     <p>{{ post.content | linebreaks}}</p>
+    <hr>
+
+    {% if not user.is_authenticated %}
+        {% include "registration_ad.html" %}
+    {% endif %}
+
 {% endblock content %}

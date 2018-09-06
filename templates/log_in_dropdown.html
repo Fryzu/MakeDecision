@@ -7,7 +7,7 @@
 <div class="btn-group">
     <form method="POST" action="{% url 'logout_view' %}">
         {% csrf_token %}
-        <input type="submit" class="btn btn-primary" value="Log out">
+        <button type="submit" class="btn btn-primary" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px;">Log out</button>
     </form>
 </div>
 {% else %}
@@ -16,7 +16,7 @@
         Log in
     </button>
     <div class="dropdown-menu">
-        <form class="px-4 py-3" method="POST">
+        <form class="px-4 py-3" method="POST" action="{% url 'main_view' %}">
             {% csrf_token %}
             <div class="form-group">
                 <label for="exampleDropdownFormEmail1">Username</label>
