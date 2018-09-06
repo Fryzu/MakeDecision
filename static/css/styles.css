@@ -3,3 +3,19 @@
 #main_slider {
     background-image: url('../images/animal.jpg');
 }
+
+#ad-jumbotron {
+    background-color: #F04143;
+}
+
+#ad-jumbotron h1 {
+    color: #FFF;
+}
+
+#ad-jumbotron h3 {
+    color: #FFC721;
+}
+
+#ad-jumbotron h5 {
+    color: #EDF288;
+}
