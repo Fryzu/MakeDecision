@@ -6,6 +6,15 @@ from django.urls import reverse
 
 # Create your models here.
 
+class Answer(models.Model):
+    title = models.CharField(max_length=120)
+    description = models.TextField()
+    count = models.IntegerField(default=0)
+    post = models.ForeignKey('Post', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return '%s : %s' %(self.post.title, self.title)
+
 class Post(models.Model):
     _id = models.AutoField(primary_key=True)
     slug = models.SlugField(unique=True, max_length=140, blank=True, null=True)

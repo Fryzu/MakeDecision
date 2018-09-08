@@ -19,4 +19,5 @@ from .views import *
 urlpatterns = [
     re_path(r'^$', main_view, name="main_view"),
     re_path(r'^questions/(?P<requested_slug>[a-z0-9-]+)$', post_details, name='post_details'),
+    re_path(r'^questions/increment_answer_count/(?P<requested_answer_id>[0-9]+)$', increment_answer_count, name='increment_answer_count')
 ]

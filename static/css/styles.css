@@ -1,5 +1,9 @@
 /*styles*/
 
+#clickable_link {
+    cursor: pointer;
+}
+
 .link-unstyled:hover {
     text-decoration: none;
 }

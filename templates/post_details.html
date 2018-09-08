@@ -10,8 +10,45 @@
         <a href="#">{{ post.author }}</a>
     </h5>
     <hr>
-    <p>{{ post.content | linebreaks}}</p>
-    <hr>
+    <span class="lead">{{ post.content | linebreaks}}</span>
+    
+    <h3>Answers:</h3>
+    <p>Choose one and clik on it.</p>
+    <div class="row my-3">
+    {% for answer in answers %}
+        {% if voted %}
+        <div class="col-12 col-md-6 mb-3">    
+        {% else %}
+        <div id="clickable_link" onclick="location.href='{% url 'increment_answer_count' requested_answer_id=answer.id %}';" class="col-12 col-md-6 mb-3">
+        {% endif %}
+            <div class="card border-primary">
+                <div class="card-header bg-primary text-light">{{ answer.title }}</div>
+                <div class="card-body">
+                    <p class="card-text">{{ answer.description }}</p>
+                </div>
+                <div class="card-footer">
+                    <span class="text-muted">answers:</span> {{ answer.count }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    <h3>Statistics</h3>
+    {% if voted %}
+        <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.</p>
+    {% else %}
+        <p>You can click here first to see what others think but it can infuence yours decision.</p>
+        <button class="btn btn-info dropdown-toggle" type="button" data-toggle="collapse" data-target="#scoresColapse" aria-expanded="false" aria-controls="scoresColapse">
+            Scores
+        </button>
+        <div class="collapse mt-1" id="scoresColapse">
+            <div class="card card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica,
+                craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            </div>
+        </div>
+    {% endif %}
 
     {% if not user.is_authenticated %}
         {% include "registration_ad.html" %}

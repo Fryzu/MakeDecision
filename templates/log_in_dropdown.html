@@ -1,7 +1,12 @@
 {% if user.is_authenticated %}
 <div class="btn-group">
     <button class="btn btn-light">
-        Welcome <b>{{ user.get_username }}</b>
+        Welcome <b>
+        {% if user.first_name %}
+            {{ user.first_name }}
+        {% else %}
+            {{ user.get_username }}
+        {% endif %}</b>
     </button>
 </div>
 <div class="btn-group">
