@@ -8,7 +8,7 @@ from django.urls import reverse
 
 class Answer(models.Model):
     title = models.CharField(max_length=120)
-    description = models.TextField()
+    description = models.TextField(blank=True)
     count = models.IntegerField(default=0)
     post = models.ForeignKey('Post', on_delete=models.CASCADE)
 
