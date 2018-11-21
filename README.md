@@ -4,20 +4,12 @@ Make decision is a learning project for Django Framework with additional Bootstr
 
 ![alt text](https://github.com/Fryzu/MakeDecision/blob/master/screenshots/main.png "main view")
 
+Please check out screenshots directory or run python manage.py runserver.
+
 ## Implemented features
 
-### Auth
-
-![alt text](https://github.com/Fryzu/MakeDecision/blob/master/screenshots/login.png "Login and signup")
-![alt text](https://github.com/Fryzu/MakeDecision/blob/master/screenshots/login2.png "Logged in user")
-![alt text](https://github.com/Fryzu/MakeDecision/blob/master/screenshots/signup.png "Signup view")
-
-### Posts
-
-![alt text](https://github.com/Fryzu/MakeDecision/blob/master/screenshots/post.png "Post view")
-![alt text](https://github.com/Fryzu/MakeDecision/blob/master/screenshots/post2.png "Post view")
-![alt text](https://github.com/Fryzu/MakeDecision/blob/master/screenshots/posts.png "Posts list")
-
+* auth
+* posts
 
 ## Future features
 
