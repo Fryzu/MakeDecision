@@ -16,3 +16,4 @@ Please check out screenshots directory or run python manage.py runserver.
 * users accounts managing
 * comments and feedback
 * hashtags and searching
+* post statistics
